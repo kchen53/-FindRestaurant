@@ -1,2 +1,2 @@
 # Stir or Dine-Out
-Finding places to eat at!
+Do you want to cook or dine-out? Let me give you options! :)
