@@ -1,4 +1,5 @@
 import smtplib
+from email.message import EmailMessage
 from dotenv import load_dotenv
 import os
 
@@ -8,20 +9,13 @@ sender_email = os.getenv("EMAIL")
 sender_email_pass = os.getenv("EMAIL_PASS")
 test_email = os.getenv("TEST_EMAIL")
 
-# creates SMTP session
-s = smtplib.SMTP('smtp.gmail.com', 587)
+msg = EmailMessage()
+msg['Subject'] = 'Stir or Dine'
+msg['From'] = sender_email
+msg['To'] = test_email
 
-# start TLS for security
-s.starttls()
+msg.set_content("Hello")
 
-# Authentication
-s.login(sender_email, sender_email_pass)
-
-# message to be sent
-message = "Message_you_need_to_send"
-
-# sending the mail
-s.sendmail(sender_email, test_email, message)
-
-# terminating the session
-s.quit()
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login(sender_email, sender_email_pass)
+    smtp.send_message(msg)
