@@ -22,7 +22,7 @@ def find_restaurants(prompt):
             if place["rating"] > 4.5:
                 print("Name: ", place["name"], "Address: ", place["formatted_address"], "Business Status: ", place["business_status"])
     else:
-        print("Nothing")
+        print(response.status_code)
 
 # find_restaurants("pizza in Tampa, FL")
 

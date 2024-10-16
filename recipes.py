@@ -17,8 +17,8 @@ def find_recipes(prompt):
     response = requests.get(url, params=params)
 
     if response.status_code == 200:
-        for recipe in response.json().get("results", []):
-            print("title: ", recipe["title"], "URL: ", recipe["sourceUrl"])
+        for i, recipe in enumerate(response.json().get("results", [])):
+            print("Option:", i + 1, " title: ", recipe["title"], "URL: ", recipe["sourceUrl"])
     else:
         print(response.status_code)
 
