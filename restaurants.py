@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 def find_restaurants(prompt):
-    api_key = os.getenv("YOUR_API_KEY")
+    api_key = os.getenv("REST_API_KEY")
     url = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
     params = {
@@ -17,7 +17,6 @@ def find_restaurants(prompt):
     response = requests.get(url, params=params)
 
     if response.status_code == 200:
-        # return response.json()
         results = response.json().get("results", [])
         for place in results:
             if place["rating"] > 4.5:
