@@ -22,5 +22,5 @@ def find_recipes(prompt):
     else:
         print(response.status_code)
 
-find_recipes("pizza")
+# find_recipes("pizza")
 
